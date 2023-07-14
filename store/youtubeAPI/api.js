@@ -1,6 +1,6 @@
 import axios from "axios"
 import { YOUTUBE_API_INTEGRATION_TOKEN } from "react-native-dotenv"
-const youtubeIntegration = axios.create({
+const youtubeAPI = axios.create({
   baseURL: "https://www.googleapis.com/youtube/v3",
   headers: {
     Accept: "application/json",
@@ -8,13 +8,13 @@ const youtubeIntegration = axios.create({
     Authorization: `Bearer ${YOUTUBE_API_INTEGRATION_TOKEN}`
   }
 })
-function youtubeintegration_get_captions_list(payload) {
-  return youtubeIntegration.get(`/captions`, {
+function youtubeapi_get_captions_list(payload) {
+  return youtubeAPI.get(`/captions`, {
     params: { part: payload.part, videoId: payload.videoId }
   })
 }
-function youtubeintegration_get_channels_list(payload) {
-  return youtubeIntegration.get(`/channels`, {
+function youtubeapi_get_channels_list(payload) {
+  return youtubeAPI.get(`/channels`, {
     params: {
       part: payload.part,
       categoryId: payload.categoryId,
@@ -24,6 +24,6 @@ function youtubeintegration_get_channels_list(payload) {
   })
 }
 export const apiService = {
-  youtubeintegration_get_captions_list,
-  youtubeintegration_get_channels_list
+  youtubeapi_get_captions_list,
+  youtubeapi_get_channels_list
 }
